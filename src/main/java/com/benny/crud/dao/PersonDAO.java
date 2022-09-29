@@ -103,7 +103,7 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        jdbcTemplate.update("insert into Person values (1,?,?,?)",
+        jdbcTemplate.update("insert into Person(name, age, email) values (?,?,?)",
                 person.getName(),person.getAge(),person.getEmail());
 //        try {
 //            PreparedStatement preparedStatement =
