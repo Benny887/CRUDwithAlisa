@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Neil Alishev
@@ -72,6 +73,11 @@ public class PersonDAO {
 //        }
 //
 //        return people;
+    }
+
+    public Optional<Person> show(String email){
+       return jdbcTemplate.query("select * from Person where email=?",new Object[]{email},
+                new PersonMapper()).stream().findAny();
     }
 
     public Person show(int id) {
